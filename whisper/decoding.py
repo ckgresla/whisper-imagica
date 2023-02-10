@@ -691,7 +691,7 @@ def decode(model: "Whisper", mel: Tensor, options: DecodingOptions = DecodingOpt
         the Whisper model instance
 
     mel: torch.Tensor, shape = (80, 3000) or (*, 80, 3000)
-        A tensor containing the Mel spectrogram(s)
+        A tensor containing the Mel spectrogram(s) -- for the audio file we are running inference: {translation | transcription} on
 
     options: DecodingOptions
         A dataclass that contains all necessary options for decoding 30-second segments
@@ -707,3 +707,5 @@ def decode(model: "Whisper", mel: Tensor, options: DecodingOptions = DecodingOpt
     result = DecodingTask(model, options).run(mel)
 
     return result[0] if single else result
+
+
